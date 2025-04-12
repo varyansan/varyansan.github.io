@@ -168,12 +168,32 @@
             top: -4px;
             left: -4px;
         }
+        .location {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 7px;
+            margin-bottom: 11px;
+            font-family: Arial, sans-serif;
+        }
+        .city-name {
+            font-family: 'Arial', sans-serif;
+            font-size: 16px;
+            color: var(--accent-green); /* Унаследует цвет текста резюме */
+        }
+        .birthdate {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--accent-green);
+            font-size: 15px;
+        }
 
         /* Стили для бейджей в основном контенте */
         .content-badge-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 10px;
             margin: 15px 0;
         }
 
@@ -369,13 +389,19 @@
                             </span>
                         <a href="https://t.me/brokenasphodel" target="_blank">t.me/brokenasphodel</a>
                     </div>
-                    <div class="contact-item">
-                            <span class="icon">
-                                <svg viewBox="0 0 24 24">
-                                    <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
-                                </svg>
-                            </span>
-                        <a href="https://github.com/varyansan" target="_blank">github.com/varyansan</a>
+                    <div class="location">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path fill="#ffffff" transform="translate(5.0 5.0) scale(0.6)"
+                                  d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                        <span class="city-name">Минск, Беларусь</span>
+                    </div>
+                    <div class="birthdate">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path fill="#ffffff" transform="translate(5.0 5.0) scale(0.6)"
+                                  d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V9h14v10zM5 7V5h14v2H5zm2 4h10v2H7zm0 4h7v2H7z"/>
+                        </svg>
+                        <span class="birthdate">25.12.1998</span>
                     </div>
                     <a href="https://github.com/varyansan" class="btn" target="_blank">Моё портфолио</a>
                 </div>
@@ -413,9 +439,10 @@
                 <h2>Хобби</h2>
                 <div class="sidebar-badge-container">
                     <span class="sidebar-badge">IT-литература</span>
-                    <span class="sidebar-badge">Алгоритмы</span>
+                    <span class="sidebar-badge">Алгоритмы (LeetCode)</span>
                     <span class="sidebar-badge">Геймдизайн</span>
-                    <span class="sidebar-badge">Музыка</span>
+                    <span class="sidebar-badge">Музыкальные пет-проекты на Java</span>
+                    <span class="sidebar-badge">Open-source проекты</span>
                 </div>
             </section>
         </div>
@@ -469,69 +496,6 @@
                 </div>
             </section>
 
-            <section class="education">
-                <h2>Образование</h2>
-                <div class="education-item">
-                    <div class="degree">Дирижирование (академический хор)</div>
-                    <div class="university">Санкт-Петербургский государственный институт культуры</div>
-                    <div class="date">2019-2024</div>
-                    <ul>
-                        <li>Изучение теории музыки и ее применения в академическом хоровом дирижировании.</li>
-                        <li>Освоение методов работы с вокальными группами и педагогику хорового пения.</li>
-                        <li>Практика в концертных выступлениях и организация музыкальных мероприятий.</li>
-                    </ul>
-                </div>
-                <div class="education-item">
-                    <div class="degree">Java-Developer</div>
-                    <div class="university">Edtech-компания</div>
-                    <div class="date">2024-2025</div>
-                    <div class="content-badge-container">
-                        <span class="content-badge">Java Core</span>
-                        <span class="content-badge">Spring Framework</span>
-                        <span class="content-badge">Базы данных</span>
-                        <span class="content-badge">Web разработка</span>
-                    </div>
-                </div>
-            </section>
-
-            <section class="projects">
-                <h2>Проекты</h2>
-                <div class="project">
-                    <h3>STARBANK (MVP системы рекомендаций банковских продуктов)</h3>
-                    <div class="company">Учебный проект, EdTech (топ-10 в России)</div>
-                    <div class="date">Стек: Java, Spring Boot, REST API, JdbcTemplate, H2</div>
-                    <p>Реализовано:</p>
-                    <ul>
-                        <li>Разработка REST API для выдачи персонализированных рекомендаций на основе транзакций клиентов.</li>
-                        <li>Работа с JdbcTemplate (без JPA): написание SQL-запросов, анализ данных (транзакции, продукты банка, правила рекомендаций).</li>
-                        <li>Оптимизация взаимодействия с БД для быстрого формирования рекомендаций.</li>
-                    </ul>
-                    <div class="content-badge-container">
-                        <span class="content-badge">Java</span>
-                        <span class="content-badge">Spring Boot</span>
-                        <span class="content-badge">REST API</span>
-                        <span class="content-badge">JDBC</span>
-                    </div>
-                </div>
-                <div class="project">
-                    <h3>ADS ONLINE RESALE (маркетплейс объявлений)</h3>
-                    <div class="company">Учебный проект, EdTech (топ-10 в России)</div>
-                    <div class="date">Стек: Java, Spring Boot, Spring Security, JWT, Docker, React (интеграция)</div>
-                    <p>Реализовано:</p>
-                    <ul>
-                        <li>Настройка JWT-аутентификации и ролевой модели (USER/ADMIN) с разграничением прав.</li>
-                        <li>Разработка CRUD API для объявлений (с загрузкой изображений) и комментариев.</li>
-                        <li>Интеграция с Docker-контейнером (фронтенд на React).</li>
-                    </ul>
-                    <div class="content-badge-container">
-                        <span class="content-badge">Java</span>
-                        <span class="content-badge">Spring Boot</span>
-                        <span class="content-badge">Spring Security</span>
-                        <span class="content-badge">JWT</span>
-                    </div>
-                </div>
-            </section>
-
             <section class="experience">
                 <h2>Опыт работы</h2>
                 <div class="job">
@@ -551,12 +515,96 @@
                         <span class="content-badge">Аналитика</span>
                     </div>
                 </div>
+                <div class="job">
+                    <div class="job-title">Java-Developer</div>
+                    <div class="company">Крупная EdTech компания</div>
+                    <div class="date">2024-сейчас</div>
+                    <ul>
+                        <li>Создание микросервисной архитектуры с использованием Spring Boot.</li>
+                        <li>Проектирование и оптимизация SQL-запросов для PostgreSQL/MySQL.</li>
+                        <li>Документирование API (Swagger/OpenAPI).</li>
+                        <li>Использование ORM: Hibernate, Spring Data JPA.</li>
+                        <li>Написание unit- и integration-тестов (JUnit 5, Mockito, Testcontainers).</li>
+                        <li>Реализация бизнес-логики с соблюдением принципов SOLID и Clean Code.</li>
+                    </ul>
+                    <div class="content-badge-container">
+                        <span class="content-badge">Spring Boot</span>
+                        <span class="content-badge">Java Core</span>
+                        <span class="content-badge">Spring Data JPA</span>
+                        <span class="content-badge">Hibernate</span>
+                        <span class="content-badge">PostgreSQL</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="projects">
+                <h2>Проекты</h2>
+                <div class="project">
+                    <h3>STARBANK (MVP системы рекомендаций банковских продуктов)</h3>
+                    <div class="company">Учебный проект, EdTech (топ-10 в России)</div>
+                    <div class="date">Стек: </div>
+                    <div class="content-badge-container">
+                        <span class="content-badge">Java</span>
+                        <span class="content-badge">Spring Boot</span>
+                        <span class="content-badge">REST API</span>
+                        <span class="content-badge">JDBC</span>
+                    </div>
+                    <p>Реализовано:</p>
+                    <ul>
+                        <li>Разработка REST API для выдачи персонализированных рекомендаций на основе транзакций клиентов.</li>
+                        <li>Работа с JdbcTemplate (без JPA): написание SQL-запросов, анализ данных (транзакции, продукты банка, правила рекомендаций).</li>
+                        <li>Оптимизация взаимодействия с БД для быстрого формирования рекомендаций.</li>
+                    </ul>
+                    <a href="https://github.com/varyansan/StarBankProject" class="btn">
+                        <i class="fab fa-github"></i> Посмотреть код
+                    </a>
+                </div>
+                <div class="project">
+                    <h3>ADS ONLINE RESALE (маркетплейс объявлений)</h3>
+                    <div class="company">Учебный проект, EdTech (топ-10 в России)</div>
+                    <div class="date">Стек: </div>
+                    <div class="content-badge-container">
+                        <span class="content-badge">Java</span>
+                        <span class="content-badge">Spring Boot</span>
+                        <span class="content-badge">Spring Security</span>
+                        <span class="content-badge">JWT</span>
+                    </div>
+                    <p>Реализовано:</p>
+                    <ul>
+                        <li>Настройка JWT-аутентификации и ролевой модели (USER/ADMIN) с разграничением прав.</li>
+                        <li>Разработка CRUD API для объявлений (с загрузкой изображений) и комментариев.</li>
+                        <li>Интеграция с Docker-контейнером (фронтенд на React).</li>
+                    </ul>
+                    <a href="https://github.com/varyansan/Graduat-Work" class="btn">
+                        <i class="fab fa-github"></i> Посмотреть код
+                    </a>
+                </div>
+            </section>
+
+            <section class="education">
+                <h2>Образование</h2>
+                <div class="education-item">
+                    <div class="degree">Дирижирование (академический хор)</div>
+                    <div class="university">Санкт-Петербургский государственный институт культуры</div>
+                    <div class="date">2019-2024</div>
+                </div>
+                <div class="education-item">
+                    <div class="degree">Java-Developer</div>
+                    <div class="university">Edtech-компания</div>
+                    <div class="date">2024-2025</div>
+                    <div class="content-badge-container">
+                        <span class="content-badge">Java Core</span>
+                        <span class="content-badge">Spring Framework</span>
+                        <span class="content-badge">Базы данных</span>
+                        <span class="content-badge">Web разработка</span>
+                    </div>
+                </div>
             </section>
         </div>
     </div>
 
     <footer>
-        &copy; 2024 Варвара Калинина - Java Developer
+        &copy; 2025 Варвара Калинина - Java Developer
     </footer>
 </div>
 </body>
