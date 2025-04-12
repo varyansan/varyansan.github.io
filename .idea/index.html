@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Варвара Калинина - Java Developer</title>
+    <style>
+        :root {
+            --pastel-green: #d8f3dc;
+            --pastel-yellow: #fff3b0;
+            --accent-green: #52b788;
+            --accent-yellow: #ffd166;
+            --text-dark: #2b2d42;
+            --text-light: #f8f9fa;
+            --border-color: rgba(82, 183, 136, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--pastel-green), var(--pastel-yellow));
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(to right, var(--accent-green), var(--accent-yellow));
+            color: var(--text-light);
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .profile-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 4px solid white;
+            object-fit: cover;
+            position: absolute;
+            left: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .title {
+            font-size: 1.5rem;
+            font-weight: 300;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+            padding: 30px;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .main-section {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        section {
+            background-color: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        h2 {
+            color: var(--accent-green);
+            margin-bottom: 20px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid var(--pastel-yellow);
+            font-size: 1.5rem;
+        }
+
+        h3 {
+            color: var(--accent-yellow);
+            margin: 15px 0 10px;
+            font-size: 1.2rem;
+        }
+
+        ul {
+            list-style-position: inside;
+            padding-left: 5px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* Стили для контактов и иконок */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 8px 0;
+        }
+
+        .icon {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--accent-green);
+            border-radius: 50%;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .icon svg {
+            width: 16px;
+            height: 16px;
+            fill: white;
+        }
+
+        /* Кастомные SVG иконки */
+        .phone-icon {
+            width: 16px;
+            height: 16px;
+            background: white;
+            border-radius: 50%;
+            position: relative;
+        }
+        .phone-icon:before {
+            content: '';
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border: 2px solid var(--accent-green);
+            border-radius: 50%;
+            top: -4px;
+            left: -4px;
+        }
+
+        /* Стили для бейджей в основном контенте */
+        .content-badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+        }
+
+        .content-badge {
+            padding: 6px 12px;
+            border-radius: 16px;
+            background-color: transparent;
+            color: var(--accent-green);
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .content-badge:hover {
+            background-color: rgba(82, 183, 136, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .content-badge::before {
+            content: '';
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background-color: var(--accent-green);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* Стили для бейджей в сайдбаре */
+        .sidebar-badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .sidebar-badge {
+            padding: 8px 12px;
+            border-radius: 16px;
+            background-color: rgba(255, 243, 176, 0.3);
+            color: var(--text-dark);
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 214, 102, 0.3);
+        }
+
+        .sidebar-badge:hover {
+            background-color: rgba(255, 243, 176, 0.5);
+            transform: translateY(-2px);
+        }
+
+        .sidebar-badge::before {
+            content: '';
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background-color: var(--accent-green);
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* Остальные стили */
+        .job, .education-item, .project {
+            margin-bottom: 25px;
+        }
+
+        .job-title, .degree {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .date {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin: 3px 0;
+        }
+
+        .company, .university {
+            font-style: italic;
+            color: #495057;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        a {
+            color: var(--accent-green);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: var(--accent-yellow);
+            text-decoration: underline;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, var(--accent-green), #429e75);
+            color: white;
+            border-radius: 25px;
+            text-align: center;
+            margin-top: 15px;
+            transition: all 0.3s;
+            font-weight: bold;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, var(--accent-yellow), #ffc233);
+            color: var(--text-dark);
+            text-decoration: none;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-img {
+                position: static;
+                margin: 0 auto 20px;
+                transform: none;
+                display: block;
+                width: 140px;
+                height: 140px;
+            }
+
+            header {
+                padding-top: 30px;
+                text-align: center;
+                padding-bottom: 30px;
+            }
+
+            section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <img src="profile-photo-varya.jpg" alt="Фото Варвары Калининой" class="profile-img">
+        <h1>Варвара Калинина</h1>
+        <div class="title">Java-Developer</div>
+    </header>
+
+    <div class="main-content">
+        <div class="sidebar">
+            <section class="personal-info">
+                <h2>Личные данные</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                            <span class="icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M20.5,15.5c-1.23,0-2.42-0.19-3.53-0.54c-0.32-0.1-0.67-0.04-0.92,0.16l-2.5,1.83c-2.78-1.69-4.06-3.09-5.4-5.4 l1.83-2.5c0.22-0.3,0.26-0.7,0.13-1.04C8.7,5.91,8.5,4.72,8.5,3.5c0-0.55-0.45-1-1-1H3.5C2.45,2.5,1.5,3.45,1.5,4.5 C1.5,13.62,9.38,21.5,18.5,21.5c1.05,0,2-0.95,2-2v-4c0-0.55-0.45-1-1-1H20.5z"/>
+                                </svg>
+                            </span>
+                        <a href="tel:+375298571540">+375(29)857-15-40</a>
+                    </div>
+                    <div class="contact-item">
+                            <span class="icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                                </svg>
+                            </span>
+                        <a href="mailto:varyan.san.98@gmail.com">varyan.san.98@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                            <span class="icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.57-1.38-.93-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.03-.1.03-.2-.02-.3-.05-.1-.17-.17-.33-.1-1.4.68-3.84 2.21-5.25 2.97-.49.26-.94.39-1.34.4-.85.01-1.3-.26-1.3-.26s-2.16-1.37-2.86-4.8c-.1-.4-.03-.77.23-1.03.24-.25.58-.34.9-.26.63.17 3.75 1.4 4.73 1.63.22.05.33.01.45-.23.15-.35 1.82-2.17 2.5-3.07.23-.3.05-.56.05-.56.02 0 .48.07.68.15.2.08.65.22 1.03.35 1.33.12.3.17.4.07.62-.02.25-1.28 1.77-3.2 2.52-3.96.23-.23.46-.34.62-.34.14 0 .27.02.39.12.12.1.17.25.12.5z"/>
+                                </svg>
+                            </span>
+                        <a href="https://t.me/brokenasphodel" target="_blank">t.me/brokenasphodel</a>
+                    </div>
+                    <div class="contact-item">
+                            <span class="icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+                                </svg>
+                            </span>
+                        <a href="https://github.com/varyansan" target="_blank">github.com/varyansan</a>
+                    </div>
+                    <a href="https://github.com/varyansan" class="btn" target="_blank">Моё портфолио</a>
+                </div>
+            </section>
+
+            <section class="skills">
+                <h2>Навыки</h2>
+                <div class="sidebar-badge-container">
+                    <span class="sidebar-badge">Java Core</span>
+                    <span class="sidebar-badge">Spring Boot</span>
+                    <span class="sidebar-badge">PostgreSQL</span>
+                    <span class="sidebar-badge">MySQL</span>
+                    <span class="sidebar-badge">Docker</span>
+                    <span class="sidebar-badge">REST API</span>
+                    <span class="sidebar-badge">OOP</span>
+                    <span class="sidebar-badge">Multithreading</span>
+                    <span class="sidebar-badge">Spring Data JPA</span>
+                    <span class="sidebar-badge">Spring Security</span>
+                    <span class="sidebar-badge">JWT</span>
+                    <span class="sidebar-badge">Maven</span>
+                    <span class="sidebar-badge">Gradle</span>
+                </div>
+            </section>
+
+            <section class="languages">
+                <h2>Языки</h2>
+                <div class="sidebar-badge-container">
+                    <span class="sidebar-badge">Русский (носитель)</span>
+                    <span class="sidebar-badge">Английский (B2)</span>
+                    <span class="sidebar-badge">Белорусский (B1)</span>
+                </div>
+            </section>
+
+            <section class="hobbies">
+                <h2>Хобби</h2>
+                <div class="sidebar-badge-container">
+                    <span class="sidebar-badge">IT-литература</span>
+                    <span class="sidebar-badge">Алгоритмы</span>
+                    <span class="sidebar-badge">Геймдизайн</span>
+                    <span class="sidebar-badge">Музыка</span>
+                </div>
+            </section>
+        </div>
+
+        <div class="main-section">
+            <section class="about">
+                <h2>Обо мне</h2>
+                <p>Я начинающий Java-разработчик с техническим образованием и практическим опытом создания веб-приложений. Прошла профессиональную переподготовку по направлению «Java-разработка» в Edtech- проекте, где освоила современные технологии и участвовала в коммерческих проектах.</p>
+                <p>Мой уникальный бэкграунд сочетает технические навыки и управленческий опыт:</p>
+                <div class="content-badge-container">
+                    <span class="content-badge">Руководство командой</span>
+                    <span class="content-badge">Преподавание</span>
+                    <span class="content-badge">Организация процессов</span>
+                </div>
+                <p>Этот опыт научил меня:</p>
+                <div class="content-badge-container">
+                    <span class="content-badge">Быстрая адаптация</span>
+                    <span class="content-badge">Командная работа</span>
+                    <span class="content-badge">Решение проблем</span>
+                    <span class="content-badge">Тайм-менеджмент</span>
+                </div>
+            </section>
+
+            <section class="technical-skills">
+                <h2>Технические навыки</h2>
+                <h3>Backend разработка:</h3>
+                <div class="content-badge-container">
+                    <span class="content-badge">Java 8-17</span>
+                    <span class="content-badge">Spring Framework</span>
+                    <span class="content-badge">Spring Boot</span>
+                    <span class="content-badge">Spring Security</span>
+                    <span class="content-badge">JPA/Hibernate</span>
+                    <span class="content-badge">RESTful API</span>
+                </div>
+
+                <h3>Базы данных:</h3>
+                <div class="content-badge-container">
+                    <span class="content-badge">PostgreSQL</span>
+                    <span class="content-badge">MySQL</span>
+                    <span class="content-badge">H2</span>
+                    <span class="content-badge">JDBC</span>
+                </div>
+
+                <h3>Инструменты:</h3>
+                <div class="content-badge-container">
+                    <span class="content-badge">Docker</span>
+                    <span class="content-badge">Git</span>
+                    <span class="content-badge">Maven</span>
+                    <span class="content-badge">Gradle</span>
+                    <span class="content-badge">IntelliJ IDEA</span>
+                </div>
+            </section>
+
+            <section class="education">
+                <h2>Образование</h2>
+                <div class="education-item">
+                    <div class="degree">Дирижирование (академический хор)</div>
+                    <div class="university">Санкт-Петербургский государственный институт культуры</div>
+                    <div class="date">2019-2024</div>
+                    <ul>
+                        <li>Изучение теории музыки и ее применения в академическом хоровом дирижировании.</li>
+                        <li>Освоение методов работы с вокальными группами и педагогику хорового пения.</li>
+                        <li>Практика в концертных выступлениях и организация музыкальных мероприятий.</li>
+                    </ul>
+                </div>
+                <div class="education-item">
+                    <div class="degree">Java-Developer</div>
+                    <div class="university">Edtech-компания</div>
+                    <div class="date">2024-2025</div>
+                    <div class="content-badge-container">
+                        <span class="content-badge">Java Core</span>
+                        <span class="content-badge">Spring Framework</span>
+                        <span class="content-badge">Базы данных</span>
+                        <span class="content-badge">Web разработка</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="projects">
+                <h2>Проекты</h2>
+                <div class="project">
+                    <h3>STARBANK (MVP системы рекомендаций банковских продуктов)</h3>
+                    <div class="company">Учебный проект, EdTech (топ-10 в России)</div>
+                    <div class="date">Стек: Java, Spring Boot, REST API, JdbcTemplate, H2</div>
+                    <p>Реализовано:</p>
+                    <ul>
+                        <li>Разработка REST API для выдачи персонализированных рекомендаций на основе транзакций клиентов.</li>
+                        <li>Работа с JdbcTemplate (без JPA): написание SQL-запросов, анализ данных (транзакции, продукты банка, правила рекомендаций).</li>
+                        <li>Оптимизация взаимодействия с БД для быстрого формирования рекомендаций.</li>
+                    </ul>
+                    <div class="content-badge-container">
+                        <span class="content-badge">Java</span>
+                        <span class="content-badge">Spring Boot</span>
+                        <span class="content-badge">REST API</span>
+                        <span class="content-badge">JDBC</span>
+                    </div>
+                </div>
+                <div class="project">
+                    <h3>ADS ONLINE RESALE (маркетплейс объявлений)</h3>
+                    <div class="company">Учебный проект, EdTech (топ-10 в России)</div>
+                    <div class="date">Стек: Java, Spring Boot, Spring Security, JWT, Docker, React (интеграция)</div>
+                    <p>Реализовано:</p>
+                    <ul>
+                        <li>Настройка JWT-аутентификации и ролевой модели (USER/ADMIN) с разграничением прав.</li>
+                        <li>Разработка CRUD API для объявлений (с загрузкой изображений) и комментариев.</li>
+                        <li>Интеграция с Docker-контейнером (фронтенд на React).</li>
+                    </ul>
+                    <div class="content-badge-container">
+                        <span class="content-badge">Java</span>
+                        <span class="content-badge">Spring Boot</span>
+                        <span class="content-badge">Spring Security</span>
+                        <span class="content-badge">JWT</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="experience">
+                <h2>Опыт работы</h2>
+                <div class="job">
+                    <div class="job-title">Администратор</div>
+                    <div class="company">ООО "ОМ Дана"</div>
+                    <div class="date">2023-сейчас</div>
+                    <ul>
+                        <li>Управление персоналом (8 человек).</li>
+                        <li>Подготовка отчетов и анализ эффективности работы отдела.</li>
+                        <li>Координация работы сотрудников и ведение документооборота.</li>
+                        <li>Обучение новых сотрудников, помощь в адаптации, контроль качества их работы.</li>
+                    </ul>
+                    <div class="content-badge-container">
+                        <span class="content-badge">Управление</span>
+                        <span class="content-badge">Организация</span>
+                        <span class="content-badge">Обучение</span>
+                        <span class="content-badge">Аналитика</span>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Варвара Калинина - Java Developer
+    </footer>
+</div>
+</body>
+</html>
